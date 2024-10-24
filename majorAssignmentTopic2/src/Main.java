@@ -4,53 +4,57 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static final Scanner scanner = new Scanner(System.in);  // Global scanner for input
-    private static final ArrayList<Artist> artists = new ArrayList<>();  // Store all artists
+    public static final Scanner scanner = new Scanner(System.in);  // Global scanner for input
+    public static final ArrayList<Artist> artists = new ArrayList<>();  // Store all artists
 
     public static void main(String[] args) {
         Library musicLibrary = new Library("My Music Library");  // Initialize library
         Playlist playlist = new Playlist("My Playlist");  // Initialize playlist
 
+        //Multiple existing artist and song(test)
+        Artist artist1 = new Artist("John Doe", "Rock");
+        Artist artist2 = new Artist("Jane Smith", "Pop");
+    
+        artists.add(artist1);
+        artists.add(artist2);
+
+        Song song1 = new Song("Dreamers Dream", 120, true);
+        Song song2 = new Song("Awesome Sauce", 200, true);
+        Song song3 = new Song("light White beef tripe", 70, false);
+
+        playlist.songs.add(song1);
+        playlist.songs.add(song2);
+        playlist.songs.add(song3);
+
+        Album art1 = new Album("kitchen Kaboodle", "21-9-2020");
+        art1.addSong(song3);
+
+
+
+
+
         // Main menu loop
         while (true) {
             printMenu();  // Print the menu options
             int choice = getUserChoice();  // Input validation for menu choice
-        
+
             switch (choice) {
-                case 1:
-                    addArtist();  // New option to add an artist
-                    break;
-                case 2:
-                    addSongToLibrary(musicLibrary, playlist);
-                    break;
-                case 3:
-                    addAlbumToLibrary(musicLibrary);
-                    break;
-                case 4:
-                    playlist.playNext();
-                    break;
-                case 5:
-                    playlist.playPrevious();
-                    break;
-                case 6:
-                    playlist.shufflePlay();
-                    break;
-                case 7:
-                    musicLibrary.displayLibrary();
-                    break;
-                case 8:
-                    playlist.displaySongs();
-                    break;
-                case 9:
-                    displayArtistAlbums();
-                    break;
-                case 10:
+                case 0 -> addArtist();  // option to add an artist
+                case 1 -> addSongToLibrary(musicLibrary, playlist); // add songs to playlist
+                case 2 -> addAlbumToLibrary(musicLibrary); // add album to library
+                case 3 -> playlist.playCurrentSong();
+                case 4 -> playlist.playNext();  
+                case 5 -> playlist.playPrevious(); 
+                case 6 -> playlist.shufflePlay(); 
+                case 7 -> musicLibrary.displayLibrary(); 
+                case 8 -> playlist.displaySongs(); 
+                case 9 -> displayArtistAlbums();  
+                case 10 -> {
                     System.out.println("\nExiting the program... Goodbye!");
                     scanner.close();
-                    Runtime.getRuntime().exit(10); 
                     return;
-                default:
-                    System.out.println("\nInvalid option. Please try again.");
+                }
+                default -> System.out.println("\nInvalid option. Please try again.");
             }
         }
     }
@@ -59,9 +63,10 @@ public class Main {
     private static void printMenu() {
         System.out.println("\n===========================");
         System.out.println("Choose an option:");
-        System.out.println("1. Add an Artist");
-        System.out.println("2. Add a Song to Library");
-        System.out.println("3. Add an Album to Library");
+        System.out.println("0. Add an Artist");
+        System.out.println("1. Add a Song to Library");
+        System.out.println("2. Add an Album to Library");
+        System.out.println("3. Play current Song in Playlist");
         System.out.println("4. Play Next Song in Playlist");
         System.out.println("5. Play Previous Song in Playlist");
         System.out.println("6. Shuffle Play Playlist");

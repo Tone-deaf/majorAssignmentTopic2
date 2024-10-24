@@ -1,7 +1,7 @@
 public class Song {
-    private String title;
-    private int duration;  // in seconds
-    private boolean isSingle;
+    public String title;
+    public int duration;  // in seconds
+    public boolean isSingle;
 
     public Song(String title, int duration, boolean isSingle) {
         this.title = title;

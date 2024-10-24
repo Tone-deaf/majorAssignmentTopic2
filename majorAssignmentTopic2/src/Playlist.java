@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Playlist {
-    private String name;
-    private ArrayList<Song> songs;
-    private int currentIndex = -1;
+    public String name;
+    public ArrayList<Song> songs;
+    public int currentIndex = -1;
 
     public Playlist(String name) {
         this.name = name;
@@ -16,6 +16,46 @@ public class Playlist {
         songs.add(song);
         System.out.println("Song added to playlist: " + song.getTitle());
     }
+
+
+    // retrieves the current index of the song
+    public Song getCurrentSong() {
+        if (currentIndex < 0 || songs.isEmpty()) {
+            return null;  // No song is playing
+        }
+        return songs.get(currentIndex);
+    }
+
+    //plays the current song that's been indexed currently
+    /*
+    public void playCurrentSong() {
+        if (currentIndex < 0 || songs.isEmpty()) {
+            System.out.println("No songs in the playlist.");
+            return;
+        }
+        Song currentSong = songs.get(currentIndex);
+        currentSong.play();  // Actually play the song
+        songs.get(currentIndex).play();
+    }
+    */
+
+    public void playCurrentSong() {
+        if (songs.isEmpty()) {
+            System.out.println("No songs in the playlist.");
+            return;
+        }
+        if (currentIndex == -1) {  // If no song has been played yet
+            System.out.println("No song is currently playing.");
+            return;
+        }
+        
+        // Play and return the current song
+        Song currentSong = songs.get(currentIndex);
+        currentSong.play();  // Play the current song
+    }
+
+
+
 
     // Play the next song
     public void playNext() {
@@ -49,7 +89,7 @@ public class Playlist {
     }
 
     // Recursive shuffle that prevents repeating the same song consecutively
-    private int shuffleRecursive(int previousIndex) {
+    public int shuffleRecursive(int previousIndex) {
         Random random = new Random();
         int newIndex = random.nextInt(songs.size());
         if (newIndex != previousIndex) {

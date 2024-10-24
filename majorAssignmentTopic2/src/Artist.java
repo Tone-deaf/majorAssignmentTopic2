@@ -1,14 +1,15 @@
 import java.util.ArrayList;
 
 public class Artist {
-    private String name;
-    private String genre;
-    private ArrayList<Album> albums;
+    public String name;
+    public String genre;
+    public ArrayList<Album> albums;
 
+    //Parameterizng new Artist and initializing their arrayList of album (if they have one)
     public Artist(String name, String genre) {
         this.name = name;
         this.genre = genre;
-        this.albums = new ArrayList<>();  // Initialize the ArrayList
+        this.albums = new ArrayList<>(); 
     }
 
     // Add an album to the artist's collection
@@ -29,13 +30,14 @@ public class Artist {
         }
     }
 
-    // Getter for artist's name
+
+    // fetching both name and genre of an artist
     public String getName() {
         return name;
     }
 
-    // Getter for artist's genre
     public String getGenre() {
         return genre;
     }
+    
 }
