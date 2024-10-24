@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Album {
-    private String title;
-    private String releaseDate;
-    private ArrayList<Song> songs;
+    public String title;
+    public String releaseDate;
+    public ArrayList<Song> songs;
 
     public Album(String title, String releaseDate) {
         this.title = title;
@@ -25,17 +25,20 @@ public class Album {
         }
     }
 
-    // album title fetch
+    
+    /* 
+    Fetces all the title, release date and songs
+    */
+    
     public String getTitle() {
         return title;
     }
 
-    // album release date fetch
+
     public String getReleaseDate() {
         return releaseDate;
     }
 
-    // Fetch song list
     public ArrayList<Song> getSongs() {
         return songs;
     }

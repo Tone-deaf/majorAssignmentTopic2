@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Library {
-    private String name;
-    private ArrayList<Album> albums;
-    private ArrayList<Song> songs;
+    public String name;
+    public ArrayList<Album> albums;
+    public ArrayList<Song> songs;
 
     public Library(String name) {
         this.name = name;
