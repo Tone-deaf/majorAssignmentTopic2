@@ -36,7 +36,7 @@ public class Playlist {
             System.out.println("No songs in the playlist.");
             return;
         }
-        if (songs.isEmpty() == false){
+        if (songs.isEmpty() == false && currentIndex == -1){
             currentIndex = 0;
         }
         if (currentIndex == -1) {  // If no song has been played yet

@@ -61,30 +61,27 @@ public class playListTest {
 
     @Test
     void testPlayCurrentSong() {
-        // Initially, no song is playing
-        playlist.playCurrentSong();  // Should print "No song is currently playing."
-        assertEquals(null, playlist.getCurrentSong());  // Ensure no song is playing
+        // Initially, first song being added is playing
+        playlist.playCurrentSong();  // Should print "Song 1"
+        assertEquals("Song 1", playlist.getCurrentSong().getTitle()); 
     
-        // Play the first song
-        playlist.playNext();  // Move to song1
-        assertEquals(song1, playlist.getCurrentSong()); 
-    
-        // Call playCurrentSong (this will play song1 again)
-        playlist.playCurrentSong(); 
-        assertEquals(song1, playlist.getCurrentSong());  
+        // repeat to double check it remains song 1
+        playlist.playCurrentSong();  
+        assertEquals("Song 1", playlist.getCurrentSong().getTitle()); 
     
         // Move to the next song (song2)
         playlist.playNext(); 
-        assertEquals(song2, playlist.getCurrentSong());  
+        playlist.playCurrentSong();  
+        assertEquals("Song 2", playlist.getCurrentSong().getTitle());  
     
         // Call playCurrentSong (this will play song2 again)
         playlist.playCurrentSong();  
-        assertEquals(song2, playlist.getCurrentSong());  
+        assertEquals("Song 2", playlist.getCurrentSong().getTitle());  
     
         // Play the third song (song3)
         playlist.playNext();  // Move to song3
         playlist.playCurrentSong();  
-        assertEquals(song3, playlist.getCurrentSong());
+        assertEquals("Song 3", playlist.getCurrentSong().getTitle());
     }
 
 }
